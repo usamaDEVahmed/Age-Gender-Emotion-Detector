@@ -20,3 +20,12 @@ class FaceDetector():
     def plot_coords(self, frame, coords):
         for x, y, w, h in coords:
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), thickness=2)
+
+    def get_cropped_face(self, original_img, face_coords):
+        flatten_coords = np.array(face_coords).flatten()
+        if len(flatten_coords) == 4:
+            x, y, w, h = np.array(face_coords).flatten()
+            return original_img[y: y+h, x: x+w]
+        else:
+            return original_img
+        

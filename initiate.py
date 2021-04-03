@@ -9,9 +9,10 @@ if __name__ == '__main__':
     while True:
         frame = video_initializer.get_frame()
         resized_frame = video_initializer.resize_frame(frame, (640, 480))
-        faces_coords = face_detector.detect_faces(resized_frame)
-        face_detector.plot_coords(resized_frame, faces_coords)
-        cv2.imshow('Face Detector', resized_frame)
+        face_coords = face_detector.detect_faces(resized_frame)
+        # face_detector.plot_coords(resized_frame, face_coords)
+        cropped_face = face_detector.get_cropped_face(resized_frame, face_coords)
+        cv2.imshow('Face', cropped_face)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
