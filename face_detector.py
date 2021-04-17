@@ -27,5 +27,5 @@ class FaceDetector():
             x, y, w, h = np.array(face_coords).flatten()
             return original_img[y: y+h, x: x+w]
         else:
-            return original_img
+            return np.zeros((4, 4))
         
